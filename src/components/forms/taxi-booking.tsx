@@ -102,7 +102,7 @@ export default function TaxiBookingForm() {
 	return (
 		<FormProvider {...methods}>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<Card className="w-[350px] sm:w-[400px] md:w-[500px] text-left max-w-full">
+				<Card className="w-[350px] sm:w-[400px] md:w-[500px] text-left max-w-full px-2">
 					<CardContent className="pt-6">
 						<div className="mb-8">
 							<Progress
