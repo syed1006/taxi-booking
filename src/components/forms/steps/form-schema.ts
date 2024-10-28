@@ -1,5 +1,4 @@
 import { Bus, Car, Gem, Truck } from "lucide-react";
-import { ReactNode } from "react";
 import * as z from "zod";
 
 export const tripInfoSchema = z.object({
