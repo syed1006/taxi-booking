@@ -88,7 +88,7 @@ export default function TaxiBookingForm() {
 		if (step < steps.length - 1) {
 			setStep(step + 1);
 		} else {
-			console.log("Form submitted:", data, methods.getValues());
+			console.log("Form submitted:", data, getValues());
 			// Here you would typically send the data to your backend
 		}
 	};
