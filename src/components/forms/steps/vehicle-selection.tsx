@@ -18,6 +18,7 @@ export default function VehicleSelection() {
 	} = useFormContext<BookingFormData>();
 
 	const selectedVehicleType = watch("vehicle.vehicleType");
+	const selectedVehicleModel = watch("vehicle.vehicleModel");
 
 	// Find the models associated with the selected vehicle type
 	const selectedVehicleModels = selectedVehicleType
@@ -33,6 +34,7 @@ export default function VehicleSelection() {
 						setValue("vehicle.vehicleType", value as VehicleType)
 					}
 					className="grid grid-cols-2 gap-4 sm:grid-cols-4"
+					value={selectedVehicleType}
 				>
 					{vehicleOptions.map((vehicle) => (
 						<div key={vehicle.type} className="flex">
@@ -70,6 +72,7 @@ export default function VehicleSelection() {
 					onValueChange={(value) =>
 						setValue("vehicle.vehicleModel", value)
 					}
+					value={selectedVehicleModel}
 				>
 					<SelectTrigger>
 						<SelectValue placeholder="Select vehicle model" />

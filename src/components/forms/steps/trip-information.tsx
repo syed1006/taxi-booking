@@ -15,7 +15,10 @@ export default function TripInformation() {
 		register,
 		formState: { errors },
 		setValue,
+		watch,
 	} = useFormContext<BookingFormData>();
+
+	const serviceTypeValue = watch("tripInfo.serviceType");
 
 	return (
 		<div className="space-y-4">
@@ -25,6 +28,7 @@ export default function TripInformation() {
 					onValueChange={(value) =>
 						setValue("tripInfo.serviceType", value as ServiceType)
 					}
+					value={serviceTypeValue}
 				>
 					<SelectTrigger>
 						<SelectValue placeholder="Select service type" />
