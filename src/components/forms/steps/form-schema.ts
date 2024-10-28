@@ -1,3 +1,5 @@
+import { Bus, Car, Gem, Truck } from "lucide-react";
+import { ReactNode } from "react";
 import * as z from "zod";
 
 export const tripInfoSchema = z.object({
@@ -98,11 +100,16 @@ export type VehicleModels = {
 };
 
 // Define the options array with specific types for models
-export const vehicleOptions: {
-	[K in VehicleType]: { type: K; models: VehicleModels[K] };
-} = {
-	sedan: {
+export const vehicleOptions: Array<{
+	type: VehicleType;
+	label: string;
+	models: VehicleModels[VehicleType];
+	icon: any;
+	description: string;
+}> = [
+	{
 		type: "sedan",
+		label: "Sedan",
 		models: [
 			"Toyota Etios",
 			"Nissan Sunny",
@@ -111,9 +118,12 @@ export const vehicleOptions: {
 			"Honda Amaze",
 			"Mahindra Verito",
 		],
+		icon: Car,
+		description: "4+1 seater",
 	},
-	suv: {
+	{
 		type: "suv",
+		label: "Suv",
 		models: [
 			"Suzuki Ertiga",
 			"Toyota Innova",
@@ -121,17 +131,23 @@ export const vehicleOptions: {
 			"Toyota Innova Crysta",
 			"Toyota High Cross",
 		],
+		icon: Truck,
+		description: "6+1 or 7+1 seater",
 	},
-	tempo: {
+	{
 		type: "tempo",
+		label: "Traveler",
 		models: [
 			"12+1 Tempo Traveller",
 			"17+1 Tempo Traveller",
 			"25+1 Tempo Traveller",
 		],
+		icon: Bus,
+		description: "12+1 to 25+1 seater",
 	},
-	luxury: {
+	{
 		type: "luxury",
+		label: "Luxury",
 		models: [
 			"Mercedes E-Class",
 			"Mercedes S-Class",
@@ -141,8 +157,10 @@ export const vehicleOptions: {
 			"Toyota Fortuner",
 			"Toyota High Cross",
 		],
+		icon: Gem,
+		description: "4+1 or 5+1 seater",
 	},
-};
+];
 
 export type ServiceType =
 	| "airport"

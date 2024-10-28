@@ -21,7 +21,7 @@ export default function VehicleSelection() {
 
 	// Find the models associated with the selected vehicle type
 	const selectedVehicleModels = selectedVehicleType
-		? vehicleOptions[selectedVehicleType].models
+		? vehicleOptions.find((veh) => veh.type === selectedVehicleType)?.models
 		: [];
 
 	return (
@@ -32,19 +32,27 @@ export default function VehicleSelection() {
 					onValueChange={(value) =>
 						setValue("vehicle.vehicleType", value as VehicleType)
 					}
+					className="grid grid-cols-2 gap-4 sm:grid-cols-4"
 				>
-					{Object.values(vehicleOptions).map((option) => (
-						<div
-							key={option.type}
-							className="flex items-center space-x-2"
-						>
+					{vehicleOptions.map((vehicle) => (
+						<div key={vehicle.type} className="flex">
 							<RadioGroupItem
-								value={option.type}
-								id={option.type}
+								value={vehicle.type}
+								id={vehicle.type}
+								className="peer sr-only"
 							/>
-							<Label htmlFor={option.type}>
-								{option.type.charAt(0).toUpperCase() +
-									option.type.slice(1)}
+							<Label
+								htmlFor={vehicle.type}
+								className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary min-h-[100px] w-full"
+								style={{ flexGrow: 1, minHeight: "120px" }}
+							>
+								<vehicle.icon className="mb-3 h-6 w-6" />
+								<div className="text-sm font-semibold">
+									{vehicle.label}
+								</div>
+								<div className="text-xs text-muted-foreground">
+									{vehicle.description}
+								</div>
 							</Label>
 						</div>
 					))}
