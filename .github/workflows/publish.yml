@@ -36,10 +36,10 @@ jobs:
                   path: |
                       .next/cache
                   # Generate a new cache whenever packages or source files change.
-                  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+                  key: ${{ runner.os }}-vite-react-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
                   # If source files changed but packages didn't, rebuild from a prior cache.
                   restore-keys: |
-                      ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+                      ${{ runner.os }}-vite-react-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
             - name: Build with Vite 🏗️
               run: npm run build && touch ${{ github.workspace }}/dist/.nojekyll
@@ -47,21 +47,26 @@ jobs:
             - name: List output directory (debugging) 📂
               run: ls -la
 
-            - name: Upload artifact 📡
+            - name: Upload production artifact 📡
               uses: actions/upload-pages-artifact@v3
               with:
-                  name: "github-pages"
+                  name: " production-files"
                   path: ./dist
 
     deploy:
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-
-        runs-on: ubuntu-latest
+        name: Deploy
         needs: build
+        runs-on: ubuntu-latest
 
         steps:
-            - name: Publish to GitHub Pages 🚀
-              id: deployment
-              uses: actions/deploy-pages@v4
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: production-files
+                  path: ./dist
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.TOKEN }}
+                  publish_dir: ./dist
