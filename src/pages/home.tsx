@@ -4,13 +4,12 @@ import { ContainerScroll } from "@/components/globals/container-scroll-animation
 import TaxiFormHeader from "@/components/forms/form-header";
 import TaxiBookingForm from "@/components/forms/taxi-booking";
 import ScrollingIconsContainer from "@/components/scrolling-icons-container/scrolling-icons-container";
+import Navbar from "./components/navbar";
 
 const Home = () => {
 	return (
 		<main className="dark:bg-gray-900">
-			<header className="h-10 bg-slate-500 sticky top-0 z-[100]">
-				{/* Header Content */}
-			</header>
+			<Navbar />
 			<div className="p-4">
 				<section>
 					<LampComponent />
