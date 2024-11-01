@@ -1,6 +1,3 @@
-import TaxiFormHeader from "@/components/forms/form-header";
-import TaxiBookingForm from "../components/forms/taxi-booking";
-import { ContainerScroll } from "../components/globals/container-scroll-animation";
 import { InfiniteMovingCards } from "../components/globals/infinite-moving-cards";
 import { LampComponent } from "../components/globals/lamp";
 import BangaloreIcon from "../components/icons/bangalore-icon";
@@ -29,11 +26,6 @@ const Home = () => {
 				</section>
 				<section className=" flex justify-center">
 					<InfiniteMovingCards items={items} speed="normal" />
-				</section>
-				<section>
-					<ContainerScroll titleComponent={<TaxiFormHeader />}>
-						<TaxiBookingForm />
-					</ContainerScroll>
 				</section>
 			</div>
 		</main>
