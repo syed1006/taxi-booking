@@ -1,4 +1,3 @@
-import { AsyncImage } from "@/components/async-image";
 import { Carousel, Card } from "@/components/ui/cards-carousel";
 import { PlanCard } from "../plan-cards/plan-cards";
 
@@ -20,8 +19,8 @@ export function ServicesCardsCarousel() {
 const DummyContent = () => {
 	return (
 		<>
-			{[...new Array(3).fill(1)].map((_, index) => {
-				return <PlanCard />;
+			{[...new Array(3).fill(1)].map((_, idx) => {
+				return <PlanCard key={idx} />;
 			})}
 		</>
 	);

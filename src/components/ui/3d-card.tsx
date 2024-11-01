@@ -32,12 +32,12 @@ export const CardContainer = ({
 		containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 	};
 
-	const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseEnter = (_: React.MouseEvent<HTMLDivElement>) => {
 		setIsMouseEntered(true);
 		if (!containerRef.current) return;
 	};
 
-	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseLeave = (_: React.MouseEvent<HTMLDivElement>) => {
 		if (!containerRef.current) return;
 		setIsMouseEntered(false);
 		containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -46,7 +46,7 @@ export const CardContainer = ({
 		<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
 			<div
 				className={cn(
-					"py-20 flex items-center justify-center",
+					"py-10 flex items-center justify-center",
 					containerClassName
 				)}
 				style={{

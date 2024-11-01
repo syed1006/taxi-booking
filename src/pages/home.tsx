@@ -20,7 +20,7 @@ const Home = () => {
 	];
 
 	return (
-		<main className="h-screen">
+		<main className="dark:bg-gray-900">
 			<header className="h-10 bg-slate-500 sticky top-0 z-[100]">
 				{/* Header Content */}
 			</header>
