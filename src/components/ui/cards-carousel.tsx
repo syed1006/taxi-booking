@@ -8,7 +8,7 @@ import React, {
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { AsyncImage, AsyncImageProps } from "../async-image";
+import { AsyncImage, CompleteAsyncImageProps } from "../async-image";
 import { MoveLeftIcon, MoveRightIcon, X } from "lucide-react";
 
 interface CarouselProps {
@@ -274,8 +274,10 @@ export const BlurImage = ({
 	src,
 	className,
 	alt,
+	width,
+	height,
 	...rest
-}: AsyncImageProps) => {
+}: CompleteAsyncImageProps) => {
 	const [isLoading, setLoading] = useState(true);
 	return (
 		<AsyncImage
@@ -284,7 +286,13 @@ export const BlurImage = ({
 				isLoading ? "blur-sm" : "blur-0",
 				className
 			)}
+			style={{
+				width: width || "100%",
+				height: height || "100%",
+				position: "absolute",
+			}}
 			onLoad={() => setLoading(false)}
+			sources={[{ srcSet: src }]}
 			src={src}
 			loading="lazy"
 			decoding="async"

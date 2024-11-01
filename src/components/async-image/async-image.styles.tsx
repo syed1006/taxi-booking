@@ -19,7 +19,7 @@ export const Placeholder = forwardRef(
 				backgroundRepeat: "no-repeat",
 				boxSizing: "border-box",
 				backgroundSize: "cover",
-				position: "relative",
+				position: style.position || "relative",
 			}}
 		/>
 	)

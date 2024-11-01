@@ -1,8 +1,43 @@
 import { AsyncImage } from "../async-image";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
-import { Link } from "react-router-dom";
 
-export function ThreeDCardDemo() {
+export function PlanCard() {
+	const triggerDocumentMousedown = () => {
+		const clickEvent = new MouseEvent("mousedown", {
+			bubbles: true,
+			cancelable: true,
+			view: window,
+		});
+		document.dispatchEvent(clickEvent);
+	};
+	const triggerTouchStart = () => {
+		const touchStartEvent = new TouchEvent("touchstart", {
+			bubbles: true,
+			cancelable: true,
+			view: window,
+			touches: [
+				new Touch({
+					identifier: Date.now(),
+					target: document,
+					clientX: 0,
+					clientY: 0,
+					radiusX: 10,
+					radiusY: 10,
+					force: 0.5,
+				}),
+			],
+		});
+		document.dispatchEvent(touchStartEvent);
+	};
+
+	const scrollToElement = () => {
+		const element = document.getElementById("booking-form");
+		if (element) {
+			triggerDocumentMousedown();
+			triggerTouchStart();
+			element.scrollIntoView({ behavior: "smooth" });
+		}
+	};
 	return (
 		<CardContainer className="inter-var">
 			<CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
@@ -29,10 +64,9 @@ export function ThreeDCardDemo() {
 				<div className="flex justify-between items-center mt-20">
 					<CardItem
 						translateZ={20}
-						as={Link}
-						href="https://twitter.com/mannupaaji"
-						target="__blank"
+						as="button"
 						className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+						onClick={scrollToElement}
 					>
 						Try now →
 					</CardItem>
