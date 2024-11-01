@@ -47,26 +47,21 @@ jobs:
             - name: List output directory (debugging) 📂
               run: ls -la
 
-            - name: Upload production artifact 📡
+            - name: Upload Production artifact 📡
               uses: actions/upload-pages-artifact@v3
               with:
-                  name: " production-files"
+                  name: "github-pages"
                   path: ./dist
 
     deploy:
-        name: Deploy
-        needs: build
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
         runs-on: ubuntu-latest
+        needs: build
 
         steps:
-            - name: Download artifact
-              uses: actions/download-artifact@v4
-              with:
-                  name: production-files
-                  path: ./dist
-
-            - name: Deploy to GitHub Pages
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                  github_token: ${{ secrets.TOKEN }}
-                  publish_dir: ./dist
+            - name: Publish to GitHub Pages 🚀
+              id: deployment
+              uses: actions/deploy-pages@v4
