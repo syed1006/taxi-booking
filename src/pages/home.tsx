@@ -1,3 +1,4 @@
+import { ThreeDCardDemo } from "@/components/plan-cards";
 import { InfiniteMovingCards } from "../components/globals/infinite-moving-cards";
 import { LampComponent } from "../components/globals/lamp";
 import BangaloreIcon from "../components/icons/bangalore-icon";
@@ -27,6 +28,7 @@ const Home = () => {
 				<section className=" flex justify-center">
 					<InfiniteMovingCards items={items} speed="normal" />
 				</section>
+				<ThreeDCardDemo />
 			</div>
 		</main>
 	);
