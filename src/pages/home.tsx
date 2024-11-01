@@ -1,4 +1,4 @@
-import { ThreeDCardDemo } from "@/components/plan-cards";
+import { ThreeDCardDemo } from "@/components/plan-cards/plan-cards";
 import { InfiniteMovingCards } from "../components/globals/infinite-moving-cards";
 import { LampComponent } from "../components/globals/lamp";
 import BangaloreIcon from "../components/icons/bangalore-icon";
