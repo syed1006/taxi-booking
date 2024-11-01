@@ -12,6 +12,7 @@ type InfiniteMovingCardsProps = {
 	speed?: "fast" | "normal" | "slow";
 	pauseOnHover?: boolean;
 	className?: string;
+	theme?: "light" | "dark";
 };
 
 export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
@@ -20,6 +21,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
 	speed = "fast",
 	pauseOnHover = true,
 	className,
+	theme = "dark",
 }) => {
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const scrollerRef = React.useRef<HTMLUListElement>(null);
@@ -88,7 +90,13 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
 				{items.map((item, index) => (
 					<MonumentIcon
 						key={index}
-						icon={<item.iconComponent width={290} height={290} />}
+						icon={
+							<item.iconComponent
+								stroke={theme === "dark" ? "grey" : ""}
+								width={290}
+								height={290}
+							/>
+						}
 						name={item.name}
 					/>
 				))}

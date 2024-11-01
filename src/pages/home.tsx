@@ -1,24 +1,11 @@
-import { InfiniteMovingCards } from "../components/globals/infinite-moving-cards";
 import { LampComponent } from "../components/globals/lamp";
-import BangaloreIcon from "../components/icons/bangalore-icon";
-import DelhiIcon from "../components/icons/delhi-icon";
-import HyderabadIcon from "../components/icons/hyderabad-icon";
-import KolkattaIcon from "../components/icons/kolkatta-icon";
-import MumbaiIcon from "../components/icons/mumbai-icon";
 import { ServicesCardsCarousel } from "@/components/services-carousel";
 import { ContainerScroll } from "@/components/globals/container-scroll-animation";
 import TaxiFormHeader from "@/components/forms/form-header";
 import TaxiBookingForm from "@/components/forms/taxi-booking";
+import ScrollingIconsContainer from "@/components/scrolling-icons-container/scrolling-icons-container";
 
 const Home = () => {
-	const items = [
-		{ name: "Hyderabad", iconComponent: HyderabadIcon },
-		{ name: "Mumbai", iconComponent: MumbaiIcon },
-		{ name: "Bangalore", iconComponent: BangaloreIcon },
-		{ name: "Delhi", iconComponent: DelhiIcon },
-		{ name: "Kolkata", iconComponent: KolkattaIcon },
-	];
-
 	return (
 		<main className="dark:bg-gray-900">
 			<header className="h-10 bg-slate-500 sticky top-0 z-[100]">
@@ -28,9 +15,7 @@ const Home = () => {
 				<section>
 					<LampComponent />
 				</section>
-				<section className=" flex justify-center">
-					<InfiniteMovingCards items={items} speed="normal" />
-				</section>
+				<ScrollingIconsContainer />
 				<ServicesCardsCarousel />
 				<section>
 					<ContainerScroll titleComponent={<TaxiFormHeader />}>
