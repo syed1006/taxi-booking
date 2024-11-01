@@ -42,7 +42,7 @@ jobs:
                       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
             - name: Build with Vite 🏗️
-              run: npm run build && touch ${{ github.workspace }}/build/.nojekyll
+              run: npm run build && touch ${{ github.workspace }}/dist/.nojekyll
 
             - name: List output directory (debugging) 📂
               run: ls -la
